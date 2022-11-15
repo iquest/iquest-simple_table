@@ -6,10 +6,10 @@ require 'iquest/simple_table/version'
 Gem::Specification.new do |spec|
   spec.name          = "iquest-simple_table"
   spec.version       = Iquest::SimpleTable::VERSION
-  spec.authors       = ["Pavel Dusanek"]
-  spec.email         = ["dusanek@iquest.cz"]
+  spec.authors       = ["Pavel Dusanek, Zlatka Subrova"]
+  spec.email         = ["dusanek@iquest.cz, subrova@iquest.cz"]
   spec.description   = "Simple table helper"
-  spec.summary       = "Simple table helper, taht supports filtering through Ransack"
+  spec.summary       = "Simple table helper, that supports filtering through Ransack"
   spec.homepage      = "https://github.com/iquest/iquest-simple_table"
   spec.license       = "MIT"
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  #spec.add_runtime_dependency 'ransack_simple_form', '>= 0.1.0'	
+  spec.add_runtime_dependency 'ransack_simple_form', '>= 0.1.3'
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "relaxed-rubocop"

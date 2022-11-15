@@ -1,7 +1,7 @@
 module Iquest
   module SimpleTable
     module AttributeDescription
-      def human_attribute_description(attribute, options = {})
+      def human_attribute_description(attribute, **options)
         parts     = attribute.to_s.split(".")
         attribute = parts.pop
         namespace = parts.join("/") unless parts.empty?
@@ -21,7 +21,7 @@ module Iquest
         defaults << options.delete(:default) if options[:default]
 
         options[:default] = ''
-        I18n.translate(defaults.shift, options)
+        I18n.translate(defaults.shift, **options)
       end
     end
   end

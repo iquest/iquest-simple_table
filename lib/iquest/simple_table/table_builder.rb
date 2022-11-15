@@ -62,9 +62,7 @@ module Iquest
         @attr_classes = {}
       end
 
-      def column(*args, &block)
-        attr = args.first
-        options = args.extract_options!
+      def column(attr, **options, &block)
         search = options.delete(:search)
         @columns[attr] = options
         @columns[attr][:label] ||= column_label(attr)
@@ -83,15 +81,12 @@ module Iquest
         @columns[attr][:html][:class] ||= ''
       end
 
-      def action(*args, &block)
-        _action = args.first
-        options = args.extract_options!
+      def action(**options, &block)
         options[:proc] = block if block_given?
         @actions << options
       end
 
-      def collection_action(*args)
-        action = args.first
+      def collection_action(action)
         if action.is_a? String
           @collection_actions << action
         elsif block_given?
@@ -99,15 +94,18 @@ module Iquest
         end
       end
 
-      def new_link(*_args)
+      # TODO: test
+      def new_link(_attr, **_options)
         ActiveSupport::Deprecation.warn("Iquest::SimpleTable#new_link does nothing. Use collection_action")
       end
 
-      def search_link(*_args, &block)
+      # TODO: test
+      def search_link(_attr, **_options, &block)
         @search_button = block if block_given?
       end
 
-      def reset_link(*_args, &block)
+      # TODO: test
+      def reset_link(_attr, **_options, &block)
         @reset_button = block if block_given?
       end
 
@@ -278,7 +276,7 @@ module Iquest
       def render_actions(item)
         content_tag :td, class: 'rowlink-skip' do
           @actions.map do |action|
-            render_action(item, action)
+            render_action(item, **action)
           end.join.html_safe
         end
       end
