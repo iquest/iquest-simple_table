@@ -133,7 +133,7 @@ module Iquest
       <th class="collection-actions"><%= @collection_actions.join %></th>
       <% columns.each do |attr, options| %>
         <%= content_tag :th, class: options[:class], data: options[:data] do
-          render_label(attr)
+          render_label(attr).html_safe
         end %>
       <% end %>
       <% if @search %>
@@ -180,7 +180,7 @@ module Iquest
           sort_options.reverse_merge!(method: search_action)
           "#{sort_link(@search, sort_attr, label, sort_options)}#{description(attr)}"
         else
-          "#{label}#{description(attr)}".html_safe
+          "#{label}#{description(attr)}"
         end
       end
 
