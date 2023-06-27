@@ -178,10 +178,9 @@ module Iquest
             sort_attr = sort
           end
           sort_options.reverse_merge!(method: search_action)
-          sort_link(@search, sort_attr, label, sort_options) << description(attr)
+          "#{sort_link(@search, sort_attr, label, sort_options)}#{description(attr)}"
         else
-          label << description(attr)
-          label.html_safe
+          "#{label}#{description(attr)}".html_safe
         end
       end
 
