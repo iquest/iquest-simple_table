@@ -21,7 +21,7 @@ module Iquest
         defaults << options.delete(:default) if options[:default]
 
         options[:default] = ''
-        I18n.translate(defaults.shift, options)
+        I18n.translate(defaults.shift, **options)
       end
     end
   end

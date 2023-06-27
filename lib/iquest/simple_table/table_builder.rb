@@ -278,7 +278,7 @@ module Iquest
       def render_actions(item)
         content_tag :td, class: 'rowlink-skip' do
           @actions.map do |action|
-            render_action(item, action)
+            render_action(item, **action)
           end.join.html_safe
         end
       end
