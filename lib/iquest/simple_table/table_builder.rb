@@ -177,7 +177,6 @@ module Iquest
           elsif sort.is_a?(Symbol) || sort.is_a?(String)
             sort_attr = sort
           end
-          sort_options.reverse_merge!(method: search_action)
           "#{sort_link(@search, sort_attr, label, sort_options)}#{description(attr)}"
         else
           "#{label}#{description(attr)}"
@@ -319,10 +318,6 @@ module Iquest
         page = params[:page] || 1
         per_page = params[:per_page]
         @collection = @collection.page(page).per(per_page)
-      end
-
-      def search_action
-        :get
       end
     end
   end
