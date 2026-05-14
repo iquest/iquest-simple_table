@@ -1,10 +1,7 @@
 module Iquest
   module SimpleTable
     module TableHelper
-      def simple_table_for(*args)
-        collection = args.first
-        opts = args.extract_options!
-
+      def simple_table_for(collection, **opts)
         opts[:html] ||= {}
         opts[:html][:class] ||= ['filter-table']
         opts[:html][:class] << ' ' if opts[:html][:class].is_a? String
